@@ -172,7 +172,7 @@ public class Jumper : MonoBehaviour
     bool IsGrounded()
     {
         Vector2 sizeOfSprite = new Vector2(sr.sprite.rect.size.x / sr.sprite.pixelsPerUnit, sr.sprite.rect.size.y / sr.sprite.pixelsPerUnit) * transform.localScale;
-        // One for each leg (if it is a square shaped character
+        // One for each leg (if it is a square shaped character)
         RaycastHit2D hit1 = Physics2D.Raycast(transform.position - new Vector3(sizeOfSprite.x / 2, (sizeOfSprite.y / 2) - raycastOffsetY), -transform.up, raycastDepth + raycastOffsetY, layerMask);
         RaycastHit2D hit2 = Physics2D.Raycast(transform.position - new Vector3(-sizeOfSprite.x / 2, (sizeOfSprite.y / 2) - raycastOffsetY), -transform.up, raycastDepth + raycastOffsetY, layerMask);
         return (hit1 || hit2);
