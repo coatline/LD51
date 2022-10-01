@@ -10,12 +10,17 @@ public class Damageable : MonoBehaviour
     /// float: Health remaining
     /// </summary>
     public event System.Action<float> Damaged;
-    public event System.Action<Player> KilledBy;
     public event System.Action Respawned;
+    public event System.Action Died;
     [SerializeField] UnityEvent Healed;
+    [SerializeField] Animator animator;
+
+    [SerializeField] float invincibilityTime;
+    bool invincible;
 
     [SerializeField] float maxHealth;
     [SerializeField] SimpleFlash flash;
+    [SerializeField] SpriteRenderer sr;
     public float MaxHealth => maxHealth;
 
     public float Health
@@ -34,19 +39,23 @@ public class Damageable : MonoBehaviour
     /// <returns>Dead</returns>
     public bool TakeDamage(float damage)
     {
-        if (Dead) return false;
+        if (Dead || invincible) return false;
 
         if (flash != null)
             flash.Flash();
+
         Health -= damage;
         Damaged?.Invoke(health);
+        StartCoroutine(DoInvincibility());
+
         return Health < 0;
     }
 
-    public void Kill(Player player)
+    public void Kill()
     {
         Dead = true;
-        KilledBy?.Invoke(player);
+        Died?.Invoke();
+        animator.Play("Die");
     }
 
     void Awake()
@@ -66,4 +75,40 @@ public class Damageable : MonoBehaviour
         Health = Mathf.Min(health + amount, maxHealth);
         print($"Healed: {amount} Health: {Health}");
     }
+
+    IEnumerator DoInvincibility()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(invincibilityTime);
+        invincible = false;
+    }
+
+    public void Destroy() => Destroy(gameObject);
 }
+
+
+//[SerializeField] bool showInvincibility;
+//[SerializeField] float invincibilityFlashSpeed;
+//[SerializeField] float invincibilityTime;
+//bool invincible;
+
+
+//IEnumerator DoInvincibility()
+//{
+//    invincible = true;
+//    yield return new WaitForSeconds(invincibilityTime);
+//    invincible = false;
+//}
+
+//int alphaDir;
+
+//private void Update()
+//{
+//    if (sr.color.a <= 0)
+//        alphaDir = 1;
+//    else if (sr.color.a >= 1)
+//        alphaDir = -1;
+
+//    if (invincible)
+//        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a + (Time.deltaTime * alphaDir));
+//}

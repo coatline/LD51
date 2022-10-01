@@ -135,8 +135,7 @@ public class Projectile : MonoBehaviour
 
         if (damageable.TakeDamage(damage))
         {
-            damageable.Kill(player);
-            //player.Killed(damageable.GetComponentInParent<Player>());
+            damageable.Kill();
         }
 
         Hit();

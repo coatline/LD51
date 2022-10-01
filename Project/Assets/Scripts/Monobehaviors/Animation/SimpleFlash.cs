@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SimpleFlash : MonoBehaviour
 {
-    [Tooltip("Material to switch to during the flash.")]
+    [Tooltip("GUI/Text")]
     [SerializeField] Material flashMaterial;
 
     [Tooltip("Duration of the flash.")]
-    [SerializeField] float duration = .125f;
+    [SerializeField] float duration = .075f;
 
-    SpriteRenderer sr;
+    [SerializeField] SpriteRenderer sr;
 
     // The material that was in use, when the script started.
     Material originalMaterial;
@@ -20,10 +20,6 @@ public class SimpleFlash : MonoBehaviour
 
     void Start()
     {
-        // Get the SpriteRenderer to be used,
-        // alternatively you could set it from the inspector.
-        sr = GetComponent<SpriteRenderer>();
-
         // Get the material that the SpriteRenderer uses, 
         // so we can switch back to it after the flash ended.
         originalMaterial = sr.material;

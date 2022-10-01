@@ -6,6 +6,7 @@ public class SlimeBoss : MonoBehaviour
 {
     [SerializeField] Damageable damageable;
     [SerializeField] SpriteRenderer sr;
+    [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Jumper jumper;
 
