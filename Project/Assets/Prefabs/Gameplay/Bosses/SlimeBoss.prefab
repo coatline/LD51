@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1272593555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1272593556}
+  m_Layer: 9
+  m_Name: HealthBarPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1272593556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272593555}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5534137107251949019}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5534137107251949021
 GameObject:
   m_ObjectHideFlags: 0
@@ -18,6 +49,7 @@ GameObject:
   - component: {fileID: 5534137107251949014}
   - component: {fileID: 1643720828}
   - component: {fileID: 1643720837}
+  - component: {fileID: 467441048}
   m_Layer: 9
   m_Name: SlimeBoss
   m_TagString: Damage
@@ -38,8 +70,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5534137107561422959}
+  - {fileID: 1272593556}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5534137107251949015
 MonoBehaviour:
@@ -139,10 +172,10 @@ MonoBehaviour:
   coyoteTime: 0
   jumpingGravityCutoff: 0
   yVelFallingStart: 0.1
-  fallingGravity: 7
-  jumpingGravity: 4
-  spacebarTime: 1
-  jumpVelocity: 10
+  fallingGravity: 5
+  jumpingGravity: 2
+  spacebarTime: 0.5
+  jumpVelocity: 12
   raycastDepth: 0.1
   raycastOffsetY: 0.05
   raycastSpacing: -1.42
@@ -192,18 +225,18 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.9926014, y: 1.9522316}
-      - {x: -0.98710823, y: 1.9263747}
-      - {x: -2.3707466, y: 1.1602749}
-      - {x: -3.00313, y: 0.2047627}
-      - {x: -3.0922117, y: -0.7482338}
-      - {x: -2.613286, y: -1.4090971}
-      - {x: -1.7454009, y: -2.0590577}
-      - {x: 1.730957, y: -2.035275}
-      - {x: 2.6304677, y: -1.4737688}
-      - {x: 3.0300088, y: -0.7114521}
-      - {x: 3.0513742, y: 0.28907144}
-      - {x: 2.317474, y: 1.2049094}
+    - - {x: 0.8928442, y: 1.709964}
+      - {x: -0.8588486, y: 1.7838643}
+      - {x: -2.2567377, y: 1.0747687}
+      - {x: -2.7893639, y: 0.1620096}
+      - {x: -2.9497013, y: -0.6627276}
+      - {x: -2.5135283, y: -1.3805951}
+      - {x: -1.7311497, y: -1.8737941}
+      - {x: 1.6882038, y: -1.8642625}
+      - {x: 2.5164592, y: -1.4737688}
+      - {x: 2.7877412, y: -0.75420535}
+      - {x: 2.8518596, y: 0.17506325}
+      - {x: 2.2604697, y: 1.0909013}
   m_UseDelaunayMesh: 0
 --- !u!114 &5534137107251949013
 MonoBehaviour:
@@ -222,7 +255,7 @@ MonoBehaviour:
       m_Calls: []
   animator: {fileID: 5534137107251949014}
   invincibilityTime: 0.05
-  maxHealth: 100
+  maxHealth: 50
   flash: {fileID: 1643720828}
   sr: {fileID: 5534137107251949018}
 --- !u!95 &5534137107251949014
@@ -272,6 +305,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65a7c36bbd69ce46a4a5b64f7249abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagePerTick: 3
+  tickInterval: 0.1
+--- !u!114 &467441048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5534137107251949021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f5b9690dab9ed43a2120d55becfba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 5534137107251949013}
+  healthBar: {fileID: 0}
+  healthBarPrefab: {fileID: 2747470802708005156, guid: 263d273f72b2df441bb53a0be5aa0b96, type: 3}
+  position: {fileID: 1272593556}
+  healthCountText: {fileID: 0}
 --- !u!1 &5534137107561422958
 GameObject:
   m_ObjectHideFlags: 0

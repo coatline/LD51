@@ -16,11 +16,6 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Pickup"))
             currentPickup = collision.gameObject.GetComponent<Pickup>();
-        else if (collision.gameObject.CompareTag("Damage"))
-        {
-
-        }
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)

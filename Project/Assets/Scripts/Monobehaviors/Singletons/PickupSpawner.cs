@@ -5,11 +5,13 @@ using UnityEngine;
 public class PickupSpawner : Singleton<PickupSpawner>
 {
     [SerializeField] Pickup pickupPrefab;
-    [SerializeField] GameObject experiecePrefab;
+    [SerializeField] Rigidbody2D experiecePrefab;
 
     public void SpawnExp(Vector2 pos)
     {
-        Instantiate(experiecePrefab, pos, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+        Rigidbody2D rb = Instantiate(experiecePrefab, pos, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+        rb.angularVelocity = Random.Range(0, 361f);
+        rb.AddForce(new Vector2(Random.Range(-250f, 250f), Random.Range(-150f, 350f)));
     }
 
     public void SpawnItem(Item i, int count, Vector3 pos, bool doForce = true)

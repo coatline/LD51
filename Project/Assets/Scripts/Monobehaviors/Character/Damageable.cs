@@ -48,6 +48,8 @@ public class Damageable : MonoBehaviour
         Damaged?.Invoke(health);
         StartCoroutine(DoInvincibility());
 
+        if (Health < 0)
+            Kill();
         return Health < 0;
     }
 

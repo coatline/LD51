@@ -6,7 +6,6 @@ public class SlimeBoss : MonoBehaviour
 {
     [SerializeField] Damageable damageable;
     [SerializeField] SpriteRenderer sr;
-    [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Jumper jumper;
 
@@ -24,6 +23,15 @@ public class SlimeBoss : MonoBehaviour
         speed = stage1Speed;
         StartCoroutine(WaitForNextJump());
         damageable.HealthChanged += Damaged;
+        damageable.Died += Died;
+    }
+
+    void Died()
+    {
+        for (int i = 0; i < Random.Range(25, 50); i++)
+        {
+            PickupSpawner.I.SpawnExp(transform.position);
+        }
     }
 
     void Damaged(float current, float max)
@@ -56,25 +64,21 @@ public class SlimeBoss : MonoBehaviour
 
         if (stage2)
         {
-
+            sr.sprite = stage2Sprites[0];
             yield return new WaitForSeconds(GetJumpDelay() / 2f);
             StartCoroutine(HoldJumpStage2());
         }
         else
         {
-
+            sr.sprite = stage1Sprites[0];
             yield return new WaitForSeconds(GetJumpDelay());
             StartCoroutine(HoldJumpStage1());
         }
         waiting = false;
     }
 
-    Coroutine coroutine;
-
     IEnumerator HoldJumpStage1()
     {
-        sr.sprite = stage1Sprites[0];
-
         if (transform.position.x < 0)
             dir = 1;
         else
@@ -91,8 +95,6 @@ public class SlimeBoss : MonoBehaviour
 
     IEnumerator HoldJumpStage2()
     {
-        sr.sprite = stage2Sprites[0];
-
         if (Random.Range(0, 2) == 0)
         {
             if (transform.position.x < 0)
@@ -119,9 +121,9 @@ public class SlimeBoss : MonoBehaviour
     float GetJumpTime()
     {
         if (dir == 1)
-            return .5f;
+            return .25f;
         else
-            return 1f;
+            return .75f;
     }
 
     float GetJumpDelay()
@@ -129,6 +131,6 @@ public class SlimeBoss : MonoBehaviour
         if (dir == 1)
             return 1f;
         else
-            return .5f;
+            return 2f;
     }
 }

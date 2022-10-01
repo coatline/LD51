@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ExperienceHandler : MonoBehaviour
 {
+    [SerializeField] ParticleSystem particleSystem;
     [SerializeField] TMP_Text experienceCountText;
     [SerializeField] TMP_Text currentLevelText;
     [SerializeField] BarAnimation experienceBar;
@@ -38,6 +39,16 @@ public class ExperienceHandler : MonoBehaviour
         toNextLevel += experienceCapInterval;
         level++;
         currentLevelText.text = $"Lvl {level}";
+        StartCoroutine(EmitParticles());
+    }
+
+    IEnumerator EmitParticles()
+    {
+        particleSystem.Emit(25);
+        yield return new WaitForSeconds(.1f);
+        particleSystem.Emit(50);
+        yield return new WaitForSeconds(.15f);
+        particleSystem.Emit(100);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,7 +56,7 @@ public class ExperienceHandler : MonoBehaviour
         if (collision.gameObject.CompareTag("Experience"))
         {
             Destroy(collision.gameObject);
-            Add(1);
+            Add(2);
         }
     }
 }
