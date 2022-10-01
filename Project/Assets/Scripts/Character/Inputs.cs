@@ -49,4 +49,10 @@ public class Inputs : MonoBehaviour
             jumper.ReleaseJumpButton();
         }
     }
+
+    private void FixedUpdate()
+    {
+        if (jumpButtonDown)
+            jumper.PressJump();
+    }
 }

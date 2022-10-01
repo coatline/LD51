@@ -1180,6 +1180,7 @@ GameObject:
   - component: {fileID: 1179656947}
   - component: {fileID: 1179656945}
   - component: {fileID: 1179656946}
+  - component: {fileID: 1179656949}
   - component: {fileID: 1179656948}
   m_Layer: 0
   m_Name: Player
@@ -1376,7 +1377,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc70d5bf28e9cd4e9482562bf28f1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMovementSpeed: 8
+  StoppedMoving:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1179656949}
+        m_TargetAssemblyTypeName: AnimationHandler, Assembly-CSharp
+        m_MethodName: StoppedMoving
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  StartedMoving:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1179656949}
+        m_TargetAssemblyTypeName: AnimationHandler, Assembly-CSharp
+        m_MethodName: StartedMoving
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  defaultMovementSpeed: 10
   rb: {fileID: 1179656945}
   inputs: {fileID: 1179656943}
 --- !u!50 &1179656945
@@ -1395,7 +1426,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0b5b3b21330023b4f87dc68f886c4786, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1409,7 +1440,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1179656938}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0b5b3b21330023b4f87dc68f886c4786, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1447,11 +1478,11 @@ MonoBehaviour:
   jumpPressEarlyTime: 0
   coyoteTime: 0.1
   jumpingGravityCutoff: 3
-  yVelFallingStart: 0.1
+  yVelFallingStart: 0.25
   fallingGravity: 5
-  jumpingGravity: 1.5
-  spacebarTime: 0.15
-  jumpVelocity: 7.5
+  jumpingGravity: 1
+  spacebarTime: 0.1
+  jumpVelocity: 10
   raycastDepth: 0.1
   raycastOffsetY: 0.05
 --- !u!95 &1179656948
@@ -1474,6 +1505,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1179656949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179656938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d087888af15db8a45882a0678e3358f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1179656948}
 --- !u!1 &1422838035
 GameObject:
   m_ObjectHideFlags: 0

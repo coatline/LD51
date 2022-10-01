@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Mover : MonoBehaviour
 {
-    public event Action StoppedMoving;
-    public event Action StartedMoving;
+    [SerializeField] UnityEvent StoppedMoving;
+    [SerializeField] UnityEvent StartedMoving;
 
     [SerializeField] float defaultMovementSpeed;
     [SerializeField] Rigidbody2D rb;
