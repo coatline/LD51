@@ -33,7 +33,7 @@ public class GunStack : ItemStack
         if (ShotsRemaining <= 0) return false;
 
         ShotsRemaining--;
-        Shot.Invoke();
+        Shot?.Invoke();
         return true;
     }
     public bool FullyReloaded => shotsRemaining == MaxShots;

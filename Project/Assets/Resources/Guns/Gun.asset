@@ -34,7 +34,7 @@ MonoBehaviour:
   maxLifeTime: 1
   weaponType: 0
   spread: 1
-  damage: 1
+  damage: 5
   range: 0
   knockBack: 0
   burst: 0
@@ -43,13 +43,13 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   parellelBullets: 0
   attackSpacing: 0.3
-  attackOffset: {x: 0.45, y: 0.06}
+  attackOffset: {x: 0.3, y: 0.06}
   projectileScale: {x: 0, y: 0}
   projectilePrefab: {fileID: -1534313286207485302, guid: 21bad5cbf04a13147aac743f699d3bae, type: 3}
   muzzleFlash:
     muzzleFlashColor: {r: 1, g: 0.79061204, b: 0.1745283, a: 1}
-    muzzleFlashSpeed: 5
-    muzzleFlashSize: 3
+    muzzleFlashSpeed: 11
+    muzzleFlashSize: 1
     doFlash: 1
   shotsPerClip: 12
   reloadTime: 2

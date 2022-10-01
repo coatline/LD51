@@ -24,6 +24,7 @@ public class Jumper : MonoBehaviour
     [Header("Raycast")]
     [SerializeField] float raycastDepth;
     [SerializeField] float raycastOffsetY;
+    [SerializeField] float raycastSpacing;
 
     int jumpingParameter;
     int fallingParameter;
@@ -49,12 +50,12 @@ public class Jumper : MonoBehaviour
         }
     }
 
+    public bool Grounded { get; private set; }
     public bool JumpLocked { get; set; }
 
     float lastOnGround;
     float lastHitJump;
     bool canBoost;
-    bool grounded;
 
     private void Awake()
     {
@@ -78,7 +79,7 @@ public class Jumper : MonoBehaviour
     {
         lastOnGround = Time.time;
 
-        grounded = true;
+        Grounded = true;
 
         if (rb.velocity.y > yVelFallingStart) return;
 
@@ -99,7 +100,7 @@ public class Jumper : MonoBehaviour
 
     void InAir()
     {
-        grounded = false;
+        Grounded = false;
 
         if (rb.velocity.y < jumpingGravityCutoff)
             rb.gravityScale = fallingGravity;
@@ -144,7 +145,7 @@ public class Jumper : MonoBehaviour
     {
         if (JumpLocked || canBoost == false) return;
 
-        if (!grounded)
+        if (!Grounded)
             // If we pressed the button within the amount of time allotted then continue even though we aren't on the ground
             if (Time.time - lastOnGround > coyoteTime)
                 return;
@@ -173,16 +174,16 @@ public class Jumper : MonoBehaviour
     {
         Vector2 sizeOfSprite = new Vector2(sr.sprite.rect.size.x / sr.sprite.pixelsPerUnit, sr.sprite.rect.size.y / sr.sprite.pixelsPerUnit) * transform.localScale;
         // One for each leg (if it is a square shaped character)
-        RaycastHit2D hit1 = Physics2D.Raycast(transform.position - new Vector3(sizeOfSprite.x / 2, (sizeOfSprite.y / 2) - raycastOffsetY), -transform.up, raycastDepth + raycastOffsetY, layerMask);
-        RaycastHit2D hit2 = Physics2D.Raycast(transform.position - new Vector3(-sizeOfSprite.x / 2, (sizeOfSprite.y / 2) - raycastOffsetY), -transform.up, raycastDepth + raycastOffsetY, layerMask);
+        RaycastHit2D hit1 = Physics2D.Raycast(transform.position - new Vector3((sizeOfSprite.x / 2) + raycastSpacing, (sizeOfSprite.y / 2) - raycastOffsetY), -transform.up, raycastDepth + raycastOffsetY, layerMask);
+        RaycastHit2D hit2 = Physics2D.Raycast(transform.position - new Vector3((-sizeOfSprite.x / 2) - raycastSpacing, (sizeOfSprite.y / 2) - raycastOffsetY), -transform.up, raycastDepth + raycastOffsetY, layerMask);
         return (hit1 || hit2);
     }
 
     private void OnDrawGizmos()
     {
         Vector2 sizeOfSprite = new Vector2(sr.sprite.rect.size.x / sr.sprite.pixelsPerUnit, sr.sprite.rect.size.y / sr.sprite.pixelsPerUnit) * transform.localScale;
-        Ray r = new Ray(transform.position - new Vector3(sizeOfSprite.x / 2, (sizeOfSprite.y / 2) - raycastOffsetY), -transform.up);
-        Ray r2 = new Ray(transform.position - new Vector3(-sizeOfSprite.x / 2, (sizeOfSprite.y / 2) - raycastOffsetY), -transform.up);
+        Ray r = new Ray(transform.position - new Vector3((sizeOfSprite.x / 2) + raycastSpacing, (sizeOfSprite.y / 2) - raycastOffsetY), -transform.up);
+        Ray r2 = new Ray(transform.position - new Vector3((-sizeOfSprite.x / 2) - raycastSpacing, (sizeOfSprite.y / 2) - raycastOffsetY), -transform.up);
         Gizmos.DrawRay(r);
         Gizmos.DrawRay(r2);
     }

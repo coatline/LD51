@@ -29,6 +29,7 @@ public class ItemHolder : MonoBehaviour
     [SerializeField] Transform handTransform;
     [SerializeField] Transform handSprite;
 
+    [SerializeField] ReloadBehavior reloadBehavior;
     [SerializeField] RecoilAnimation recoil;
     [SerializeField] AimInputs aimInputs;
     [SerializeField] ItemUser itemUser;
@@ -44,6 +45,8 @@ public class ItemHolder : MonoBehaviour
         itemDisplayer.ItemStack = stack;
         SwitchedItem?.Invoke(stack.Type);
         stack.Destroyed += StackDepleted;
+
+        reloadBehavior.Setup(ItemStack as GunStack);
     }
 
     void StackDepleted(ItemStack stack) => SwitchedItem?.Invoke(null);

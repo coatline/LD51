@@ -28,7 +28,6 @@ public class ItemUser : MonoBehaviour
     {
         damageable.Respawned += Respawned;
         //playerInputs.UseItem += TryUseItem;
-        reloadBehavior.Setup(itemHolder.ItemStack as GunStack);
     }
 
     void Respawned()

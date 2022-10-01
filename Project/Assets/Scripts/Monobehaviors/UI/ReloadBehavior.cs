@@ -33,10 +33,25 @@ public class ReloadBehavior : MonoBehaviour
 
     public void Setup(GunStack stack)
     {
+        if (gunStack != null)
+        {
+            gunStack.Shot -= Shot;
+            gunStack.ShotsGone -= AutoReload;
+            AutoReloading = false;
+            Reloading = false;
+        }
+
+        reloadTimer = 0;
         gunStack = stack;
         gunStack.Shot += Shot;
         gunStack.ShotsGone += AutoReload;
         interval = gunStack.GunType.ReloadTime / gunStack.MaxShots;
+        bar.UpdateFillAndFlash(gunStack.ShotsRemaining, gunStack.MaxShots);
+
+        if (stack.ShotsRemaining == 0)
+            AutoReloading = true;
+        else
+            bar.SetDefaultColor();
     }
 
     void Shot() => bar.UpdateFillAndFlash(gunStack.ShotsRemaining, gunStack.MaxShots);
@@ -56,6 +71,8 @@ public class ReloadBehavior : MonoBehaviour
         gunStack.FullReload();
         Reloading = false;
         AutoReloading = false;
+        bar.SetDefaultColor();
+        bar.UpdateFillAndFlash(gunStack.ShotsRemaining, gunStack.MaxShots);
     }
 
     void AutoReload()
@@ -78,22 +95,22 @@ public class ReloadBehavior : MonoBehaviour
     }
 
     float interval;
-    float timer;
+    float reloadTimer;
     void Update()
     {
         bar.transform.position = position.position;
 
         if (Reloading)
         {
-            timer += Time.deltaTime;
+            reloadTimer += Time.deltaTime;
 
             if (AutoReloading)
-                bar.UpdateFill((timer + gunStack.ShotsRemaining + 1), gunStack.MaxShots);
+                bar.UpdateFill((reloadTimer + gunStack.ShotsRemaining + 1), gunStack.MaxShots);
 
-            if (timer > interval)
+            if (reloadTimer > interval)
             {
                 gunStack.Reload();
-                timer = 0;
+                reloadTimer = 0;
 
                 if (AutoReloading == false)
                     bar.UpdateFillAndFlash(gunStack.ShotsRemaining, gunStack.MaxShots);

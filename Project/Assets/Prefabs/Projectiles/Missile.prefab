@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3824406542326243430}
   - component: {fileID: 3824406542326243428}
   - component: {fileID: 3824406542326243429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 3824406542961769430}
   - component: {fileID: 3824406542961769428}
   - component: {fileID: 3824406542961769429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Exhaust
   m_TagString: Untagged
   m_Icon: {fileID: 0}

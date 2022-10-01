@@ -132,6 +132,7 @@ public class Projectile : MonoBehaviour
     protected void Hit(Collision2D hit)
     {
         Damageable damageable = hit.gameObject.GetComponent<Damageable>();
+
         if (damageable.TakeDamage(damage))
         {
             damageable.Kill(player);

@@ -13,6 +13,7 @@ public class Inputs : MonoBehaviour
     [SerializeField] UnityEvent DecendPlatform;
     [SerializeField] ItemUser itemUser;
     [SerializeField] Jumper jumper;
+    [SerializeField] Player player;
 
     public float XMovement { get; private set; }
 
@@ -66,6 +67,14 @@ public class Inputs : MonoBehaviour
         {
             fireButtonDown = false;
         }
+    }
+
+    public void OnInteract(InputAction.CallbackContext value)
+    {
+        float val = value.ReadValue<float>();
+
+        if (val >= 0)
+            player.TryPickup();
     }
 
     private void Update()

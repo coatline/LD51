@@ -38,7 +38,8 @@ public class Bullet : Projectile
         //    return;
         //}
 
-        if (collision.gameObject.CompareTag("Player"))
+        //if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.GetComponent<Damageable>() != null)
             Hit(collision);
         else
             Hit();

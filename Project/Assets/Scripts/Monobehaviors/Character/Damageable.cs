@@ -15,6 +15,7 @@ public class Damageable : MonoBehaviour
     [SerializeField] UnityEvent Healed;
 
     [SerializeField] float maxHealth;
+    [SerializeField] SimpleFlash flash;
     public float MaxHealth => maxHealth;
 
     public float Health
@@ -35,6 +36,8 @@ public class Damageable : MonoBehaviour
     {
         if (Dead) return false;
 
+        if (flash != null)
+            flash.Flash();
         Health -= damage;
         Damaged?.Invoke(health);
         return Health < 0;
