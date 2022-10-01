@@ -69,13 +69,9 @@ public class Jumper : MonoBehaviour
     void Update()
     {
         if (!IsGrounded())
-        {
             InAir();
-        }
         else
-        {
             OnGround();
-        }
     }
 
     void OnGround()

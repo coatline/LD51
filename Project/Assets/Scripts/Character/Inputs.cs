@@ -6,9 +6,11 @@ using UnityEngine.InputSystem;
 
 public class Inputs : MonoBehaviour
 {
+    const float JUMP_DEADZONE = .175f;
     const float DOWN_PLATFORM_DEADZONE = .5f;
 
     [SerializeField] UnityEvent DecendPlatform;
+    [SerializeField] Jumper jumper;
 
     public float XMovement { get; private set; }
 
@@ -23,5 +25,28 @@ public class Inputs : MonoBehaviour
 
         if (val.y < -DOWN_PLATFORM_DEADZONE)
             DecendPlatform?.Invoke();
+    }
+
+    bool jumpButtonDown;
+
+    public void OnJump(InputAction.CallbackContext value)
+    {
+        float val = value.ReadValue<float>();
+
+        if (val >= JUMP_DEADZONE)
+        {
+            if (jumpButtonDown && val < .9f)
+            {
+                jumpButtonDown = false;
+                jumper.ReleaseJumpButton();
+            }
+            else
+                jumpButtonDown = true;
+        }
+        else if (jumpButtonDown)
+        {
+            jumpButtonDown = false;
+            jumper.ReleaseJumpButton();
+        }
     }
 }
