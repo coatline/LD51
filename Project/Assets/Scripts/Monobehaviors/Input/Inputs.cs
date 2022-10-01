@@ -7,9 +7,11 @@ using UnityEngine.InputSystem;
 public class Inputs : MonoBehaviour
 {
     const float JUMP_DEADZONE = .175f;
+    const float FIRE_DEADZONE = .175f;
     const float DOWN_PLATFORM_DEADZONE = .5f;
 
     [SerializeField] UnityEvent DecendPlatform;
+    [SerializeField] ItemUser itemUser;
     [SerializeField] Jumper jumper;
 
     public float XMovement { get; private set; }
@@ -50,9 +52,28 @@ public class Inputs : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    bool fireButtonDown;
+
+    public void OnFire(InputAction.CallbackContext value)
+    {
+        float val = value.ReadValue<float>();
+
+        if (val >= FIRE_DEADZONE && value.performed)
+        {
+            fireButtonDown = true;
+        }
+        else if (value.canceled)
+        {
+            fireButtonDown = false;
+        }
+    }
+
+    private void Update()
     {
         if (jumpButtonDown)
             jumper.PressJump();
+
+        if (fireButtonDown)
+            itemUser.TryUseItem();
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ReloadBehavior : MonoBehaviour
 {
     [SerializeField] BarAnimation reloadBarPrefab;
+    [SerializeField] Color reloadingColor;
     [SerializeField] Transform position;
 
     public bool AutoReloading { get; private set; }
@@ -61,7 +62,7 @@ public class ReloadBehavior : MonoBehaviour
     {
         StartReloading();
         AutoReloading = true;
-        bar.SetColor(Color.blue);
+        bar.SetColor(reloadingColor);
     }
 
     public void StartReloading()
@@ -87,7 +88,7 @@ public class ReloadBehavior : MonoBehaviour
             timer += Time.deltaTime;
 
             if (AutoReloading)
-                bar.UpdateFill((timer + gunStack.ShotsRemaining), gunStack.MaxShots);
+                bar.UpdateFill((timer + gunStack.ShotsRemaining + 1), gunStack.MaxShots);
 
             if (timer > interval)
             {
