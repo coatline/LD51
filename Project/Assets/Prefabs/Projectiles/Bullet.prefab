@@ -4844,7 +4844,7 @@ Transform:
   m_GameObject: {fileID: 8562298345010794539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 585168334767559843}
@@ -4865,7 +4865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 7910362355656067938}
   rb: {fileID: 8562298345010794543}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: -2696619066266350817}
   sr: {fileID: 8562298345010794541}
   animator: {fileID: 0}
   col: {fileID: 9126525974032349611}
@@ -4913,8 +4913,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 429044fa0ff7e794c81e7213467b76a1, type: 3}
-  m_Color: {r: 0.9948462, g: 1, b: 0.7216981, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1b2377364a2bc4a4581fb7b7f9a63770, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4970,9 +4970,9 @@ AudioSource:
   m_GameObject: {fileID: 8562298345010794539}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  OutputAudioMixerGroup: {fileID: 5135058167103421626, guid: e31546185f37adf458ed88d49b80d4dc, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 58c2dfbb8ed30774f9e605c2dfd093d6, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

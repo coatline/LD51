@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2053892b1b7dca242b87304432b57657, type: 3}
+  m_Name: SlimeTakeDamage
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 398a0a3d6d75d86449eb36d88b3007d9, type: 3}
+  - {fileID: 8300000, guid: 3af971f60c444ca4dbf256fb42531fa5, type: 3}
+  - {fileID: 8300000, guid: f1f2f0aa44720204e862764af8cd10fc, type: 3}
+  - {fileID: 8300000, guid: 47a62b75e95f7e347bd9dd5ff6453568, type: 3}

@@ -10,32 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a3b2336f2aefa54584d35abe0470f95, type: 3}
-  m_Name: Gun
+  m_Name: Uzi
   m_EditorClassIdentifier: 
   type: 0
-  sprite: {fileID: 21300000, guid: 79c9fd67ccf94ee41b917a1e421686d8, type: 3}
-  soundOnUse: {fileID: 0}
+  sprite: {fileID: 21300000, guid: bf7ade95f61130a4ab89d98b45855f8c, type: 3}
+  soundOnUse: {fileID: 11400000, guid: 37a521e99e0b35d4bbc36f00aedbe322, type: 2}
   description: 
   cost: 0
   autoUse: 0
-  useRate: 0.1
+  useRate: 0.01
   maxStack: 0
   healAmount: 0
   recoilSettings:
-    recoilAmount: 0
-    recoverySpeed: 0
+    recoilAmount: 0.15
+    recoverySpeed: 10
     recoveryDelay: 0
   attackLinearDrag: {x: 0, y: 0}
   attackGravity: 1
-  attackForce: 15
+  attackForce: 20
   attackCount: 1
   fadeOut: 1
   fadeOutMagnitude: 0
   maxLifeTime: 1
   weaponType: 0
-  spread: 1
-  damage: 5
-  range: 0
+  spread: 50
+  damage: 2
   knockBack: 0
   burst: 0
   attacksPerBurst: 0
@@ -43,14 +42,14 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   parellelBullets: 0
   attackSpacing: 0.3
-  attackOffset: {x: 0.3, y: 0.06}
+  attackOffset: {x: 0.5, y: 0.15}
   projectileScale: {x: 0, y: 0}
   projectilePrefab: {fileID: -1534313286207485302, guid: 21bad5cbf04a13147aac743f699d3bae, type: 3}
   muzzleFlash:
-    muzzleFlashColor: {r: 1, g: 0.79061204, b: 0.1745283, a: 1}
-    muzzleFlashSpeed: 11
+    muzzleFlashColor: {r: 1, g: 1, b: 1, a: 1}
+    muzzleFlashSpeed: 12
     muzzleFlashSize: 1
     doFlash: 1
-  shotsPerClip: 12
-  reloadTime: 2
+  shotsPerClip: 50
+  reloadTime: 0.2
   reloadAnimation: 0

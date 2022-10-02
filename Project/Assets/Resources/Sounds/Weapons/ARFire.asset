@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2053892b1b7dca242b87304432b57657, type: 3}
+  m_Name: ARFire
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: b8f48f9c113a52b408f6171cb865c2b3, type: 3}
+  - {fileID: 8300000, guid: 985e3903d2b3f6b459d0f81a65f1805e, type: 3}
+  - {fileID: 8300000, guid: db192834176624a4381c9863006bc8d3, type: 3}

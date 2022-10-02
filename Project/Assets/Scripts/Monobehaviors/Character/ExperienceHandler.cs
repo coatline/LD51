@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class ExperienceHandler : MonoBehaviour
 {
+    [SerializeField] AudioSource expAudioSource;
+    [SerializeField] AudioSource levelUpAudioSource;
+    [SerializeField] Sound gatherExpSound;
+    [SerializeField] Sound levelUpSound;
+
     [SerializeField] ParticleSystem particleSystem;
     [SerializeField] TMP_Text experienceCountText;
     [SerializeField] TMP_Text currentLevelText;
@@ -28,6 +33,8 @@ public class ExperienceHandler : MonoBehaviour
 
         if (exp >= toNextLevel)
             LevelUp();
+        else
+            expAudioSource.PlayOneShot(gatherExpSound.RandomSound());
 
         experienceBar.UpdateFillAndFlash(exp, toNextLevel);
         experienceCountText.text = $"{exp}/{toNextLevel}";
@@ -39,6 +46,7 @@ public class ExperienceHandler : MonoBehaviour
         toNextLevel += experienceCapInterval;
         level++;
         currentLevelText.text = $"Lvl {level}";
+        levelUpAudioSource.PlayOneShot(levelUpSound.RandomSound());
         StartCoroutine(EmitParticles());
     }
 

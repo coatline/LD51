@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3b2336f2aefa54584d35abe0470f95, type: 3}
+  m_Name: Rocket Launcher
+  m_EditorClassIdentifier: 
+  type: 0
+  sprite: {fileID: 21300000, guid: 879aabe49fe2c6a49a5311b9dcd6db40, type: 3}
+  soundOnUse: {fileID: 11400000, guid: b25797d63e948384486ab7201244bd5a, type: 2}
+  description: 
+  cost: 0
+  autoUse: 0
+  useRate: 1
+  maxStack: 0
+  healAmount: 0
+  recoilSettings:
+    recoilAmount: 0.8
+    recoverySpeed: 1
+    recoveryDelay: 0.2
+  attackLinearDrag: {x: 0, y: 0}
+  attackGravity: 1
+  attackForce: 10
+  attackCount: 1
+  fadeOut: 1
+  fadeOutMagnitude: 0
+  maxLifeTime: 3
+  weaponType: 0
+  spread: 0
+  damage: 20
+  knockBack: 0
+  burst: 0
+  attacksPerBurst: 0
+  canRollInBurst: 0
+  timeBetweenAttacks: 0
+  parellelBullets: 0
+  attackSpacing: 0.3
+  attackOffset: {x: 1, y: 0.06}
+  projectileScale: {x: 0, y: 0}
+  projectilePrefab: {fileID: 3824406542326243428, guid: 0d1193a72ad02fd4d95bf45178fdaae5, type: 3}
+  muzzleFlash:
+    muzzleFlashColor: {r: 1, g: 1, b: 1, a: 1}
+    muzzleFlashSpeed: 11
+    muzzleFlashSize: 1
+    doFlash: 1
+  shotsPerClip: 1
+  reloadTime: 0.2
+  reloadAnimation: 0

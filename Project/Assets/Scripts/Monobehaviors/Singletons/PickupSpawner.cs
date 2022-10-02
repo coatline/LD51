@@ -33,6 +33,12 @@ public class PickupSpawner : Singleton<PickupSpawner>
 
     private void Start()
     {
-        SpawnItem(new GunStack(DataLibrary.I.Guns["Gun"], 1), Vector3.zero);
+        SpawnItem(new GunStack(DataLibrary.I.Guns["Assault Rifle"], 1), Vector3.zero);
+        SpawnItem(new GunStack(DataLibrary.I.Guns["Bubble Gun"], 1), Vector3.zero);
+        SpawnItem(new GunStack(DataLibrary.I.Guns["Burst"], 1), Vector3.zero);
+        SpawnItem(new GunStack(DataLibrary.I.Guns["PG"], 1), Vector3.zero);
+        SpawnItem(new GunStack(DataLibrary.I.Guns["Rocket Launcher"], 1), Vector3.zero);
+        SpawnItem(new GunStack(DataLibrary.I.Guns["Shotgun"], 1), Vector3.zero);
+        SpawnItem(new GunStack(DataLibrary.I.Guns["Uzi"], 1), Vector3.zero);
     }
 }

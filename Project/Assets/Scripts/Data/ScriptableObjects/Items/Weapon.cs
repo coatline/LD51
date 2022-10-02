@@ -17,7 +17,6 @@ public class Weapon : Item
     [SerializeField] WeaponType weaponType;
     [SerializeField] float spread;
     [SerializeField] float damage;
-    [SerializeField] float range;
     [SerializeField] float knockBack;
 
     [Header("Burst")]
@@ -31,7 +30,6 @@ public class Weapon : Item
     [SerializeField] float attackSpacing = .3f;
 
     public WeaponType WeaponType => weaponType;
-    public float Range => range;
     public float Damage => damage;
     public float AttackForce => attackForce;
     public float AttackGravity => attackGravity;

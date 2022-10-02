@@ -14,6 +14,9 @@ public class Damageable : MonoBehaviour
     public event System.Action Died;
     [SerializeField] UnityEvent Healed;
     [SerializeField] Animator animator;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] Sound damagedSound;
+    [SerializeField] Sound dieSound;
 
     [SerializeField] float invincibilityTime;
     bool invincible;
@@ -48,14 +51,18 @@ public class Damageable : MonoBehaviour
         Damaged?.Invoke(health);
         StartCoroutine(DoInvincibility());
 
+
         if (Health < 0)
             Kill();
+        else
+            audioSource.PlayOneShot(damagedSound.RandomSound());
         return Health < 0;
     }
 
     public void Kill()
     {
         if (Dead) return;
+        audioSource.PlayOneShot(dieSound.RandomSound());
         Dead = true;
         Died?.Invoke();
         animator.Play("Die");

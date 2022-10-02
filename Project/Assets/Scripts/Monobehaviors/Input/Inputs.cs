@@ -11,11 +11,21 @@ public class Inputs : MonoBehaviour
     const float DOWN_PLATFORM_DEADZONE = .5f;
 
     [SerializeField] UnityEvent DecendPlatform;
+    [SerializeField] GameObject settings;
     [SerializeField] ItemUser itemUser;
     [SerializeField] Jumper jumper;
     [SerializeField] Player player;
 
     public float XMovement { get; private set; }
+
+    public void OnPause(InputAction.CallbackContext value)
+    {
+        float val = value.ReadValue<float>();
+
+        if (value.performed == false) return;
+        if (val >= 0)
+            settings.SetActive(!settings.activeSelf);
+    }
 
     public void OnMove(InputAction.CallbackContext value)
     {

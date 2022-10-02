@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        itemHolder.ChangeItem(new GunStack(DataLibrary.I.Guns["Gun"], 1));
+        itemHolder.ChangeItem(new GunStack(DataLibrary.I.Guns["Starter Pistol"], 1));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     void ChangeItem(ItemStack i)
     {
         if (itemHolder.Item != null)
-            PickupSpawner.I.SpawnItem(itemHolder.ItemStack, transform.position, false);
+            PickupSpawner.I.SpawnItem(itemHolder.ItemStack, transform.position, true);
         itemHolder.ChangeItem(i);
     }
 }

@@ -21,6 +21,7 @@ public class Projectile : MonoBehaviour
     protected float knockback;
     protected Player player;
     protected float damage;
+    //Sound soundOnHitWall;
     Vector2 linearDrag;
     float minimumVel;
     bool dead;
@@ -39,6 +40,7 @@ public class Projectile : MonoBehaviour
         // So that the physics system does not determine knockback.
         rb.mass = 0.000001f;
 
+        audioSource.PlayOneShot(weapon.SoundOnUse.RandomSound());
         StartCoroutine(LifeTime(weapon.MaxLifeTime));
         IgnoreColliders(ignoreColliders);
     }

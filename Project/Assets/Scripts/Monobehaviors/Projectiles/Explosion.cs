@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] Sound explosionSound;
     float damage;
 
     public void Setup(float damage)
     {
         this.damage = damage;
+        audioSource.PlayOneShot(explosionSound.RandomSound());
     }
 
     public void Die()
@@ -21,8 +24,6 @@ public class Explosion : MonoBehaviour
         var d = collision.GetComponent<Damageable>();
 
         if (d != null)
-        {
             d.TakeDamage(damage);
-        }
     }
 }

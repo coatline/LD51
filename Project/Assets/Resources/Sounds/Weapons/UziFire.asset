@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2053892b1b7dca242b87304432b57657, type: 3}
+  m_Name: UziFire
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: af12022b97832a94892b154ed319619c, type: 3}
+  - {fileID: 8300000, guid: 95bc87e8b72a72f4f8c243ef8b796d94, type: 3}
+  - {fileID: 8300000, guid: 3649e6ecaa1acf142b552da9a5ae36b1, type: 3}
+  - {fileID: 8300000, guid: 718994d6b8a4f1a4d9abf1f204c8af75, type: 3}

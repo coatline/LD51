@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2053892b1b7dca242b87304432b57657, type: 3}
+  m_Name: BubbleGunFire
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 90bad289a72e91244b8691bd747fc25c, type: 3}
+  - {fileID: 8300000, guid: b904532694e202d4dba583962e61c47d, type: 3}
+  - {fileID: 8300000, guid: 634b27e9a46e54042bd767d3b836dd6f, type: 3}
+  - {fileID: 8300000, guid: f568a7a18f2beec4a8a7d9457b4aec39, type: 3}

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2053892b1b7dca242b87304432b57657, type: 3}
+  m_Name: StarterPistolFire
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: e3dd88c5492618c4eab4699041a8455e, type: 3}
+  - {fileID: 8300000, guid: 3f5dec299aae0a146816dde5b1f7c9bb, type: 3}
+  - {fileID: 8300000, guid: 58c2dfbb8ed30774f9e605c2dfd093d6, type: 3}
