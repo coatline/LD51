@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class ReloadBehavior : MonoBehaviour
 {
     [SerializeField] BarAnimation reloadBarPrefab;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] Sound reloadingSound;
+    [SerializeField] Sound finishedReloadingSound;
     [SerializeField] Color reloadingColor;
     [SerializeField] Transform position;
 
@@ -105,6 +108,9 @@ public class ReloadBehavior : MonoBehaviour
 
         if (Reloading)
         {
+            if (audioSource.isPlaying == false)
+                audioSource.PlayOneShot(reloadingSound.RandomSound());
+
             reloadTimer += Time.deltaTime;
 
             if (AutoReloading)
@@ -125,6 +131,8 @@ public class ReloadBehavior : MonoBehaviour
 
                     Reloading = false;
                     AutoReloading = false;
+                    audioSource.Stop();
+                    audioSource.PlayOneShot(finishedReloadingSound.RandomSound());
                     return;
                 }
             }

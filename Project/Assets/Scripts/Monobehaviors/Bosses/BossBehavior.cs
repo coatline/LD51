@@ -24,12 +24,17 @@ public class BossBehavior : MonoBehaviour
     {
         for (int i = 0; i < bossData.ExpOrbs; i++)
             PickupSpawner.I.SpawnExp(transform.position);
+
+        GetComponentInParent<BossSpawner>().BossDied();
     }
 
     void Damaged(float current, float max)
     {
         float percentage = current / max;
         //print($"{1 - percentage}, {(1 - percentage) * stages}, {(1 - percentage) * (stages - Stage)}, {(1 - percentage) * (Stage - stages)}");
-        Stage = Mathf.CeilToInt((1 - percentage) * stages);
+        int targetStage = Mathf.CeilToInt((1 - percentage) * stages);
+
+        if (Stage != targetStage)
+            Stage = targetStage;
     }
 }

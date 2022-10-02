@@ -7,6 +7,8 @@ public class SlimeBoss : BossBehavior
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Jumper jumper;
 
+    [SerializeField] float stage1JumpDuration;
+    [SerializeField] float stage2JumpDuration;
     [SerializeField] float stage1JumpRate;
     [SerializeField] float stage2JumpRate;
     [SerializeField] float stage1Speed;
@@ -31,16 +33,19 @@ public class SlimeBoss : BossBehavior
         }
         set
         {
+            print("Stage changed");
             StopAllCoroutines();
 
             if (value == 1)
             {
+                jumpDuration = stage1JumpDuration;
                 movementSpeed = stage1Speed;
                 jumpDelay = stage1JumpRate;
                 sprites = stage1Sprites;
             }
             else if (value == 2)
             {
+                jumpDuration = stage2JumpDuration;
                 movementSpeed = stage2Speed;
                 jumpDelay = stage2JumpRate;
                 sprites = stage2Sprites;

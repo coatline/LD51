@@ -7,7 +7,10 @@ public class WizardBoss : BossBehavior
     [SerializeField] ContactDamager lightningPrefab;
     [SerializeField] Sprite[] stage1Sprites;
     [SerializeField] Sprite[] stage2Sprites;
+    [SerializeField] Sprite[] stage3Sprites;
     [SerializeField] SpriteRenderer sr;
+    [SerializeField] AudioSource laughSource;
+    [SerializeField] Sound laughSound;
 
     [Header("Movement")]
     [SerializeField] float changeDirectionCutoff;
@@ -33,11 +36,19 @@ public class WizardBoss : BossBehavior
             if (value == 1)
             {
                 sprites = stage1Sprites;
+                StartCoroutine(Laugh());
             }
             else if (value == 2)
             {
-                acceleration *= 2;
                 sprites = stage2Sprites;
+                acceleration *= 2;
+                lightningDelay /= 2;
+                chargeUpTime /= 2;
+            }
+            else if (value == 3)
+            {
+                sprites = stage3Sprites;
+                acceleration *= 2;
                 lightningDelay /= 2;
                 chargeUpTime /= 2;
             }
@@ -94,7 +105,14 @@ public class WizardBoss : BossBehavior
         yield return new WaitForSeconds(lightningDelay - chargeUpTime);
         sr.sprite = sprites[1];
         yield return new WaitForSeconds(chargeUpTime);
-        Instantiate(lightningPrefab, new Vector3(Random.Range(-8, 8f), Random.Range(-2f, 6f)), Quaternion.identity);
+        Instantiate(lightningPrefab, new Vector3(Random.Range(-10, 10f), Random.Range(-3.5f, 7f)), Quaternion.identity);
         StartCoroutine(SpawnLightning());
+    }
+
+    IEnumerator Laugh()
+    {
+        yield return new WaitForSeconds(Random.Range(5, 15));
+        sr.sprite = sprites[1];
+        laughSource.PlayOneShot(laughSound.RandomSound());
     }
 }

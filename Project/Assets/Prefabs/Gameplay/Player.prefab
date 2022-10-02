@@ -5711,6 +5711,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reloadBarPrefab: {fileID: 2747470802708005156, guid: 1fe894aac33c63e46a78d776fc56e98a, type: 3}
+  audioSource: {fileID: 0}
+  reloadingSound: {fileID: 0}
+  finishedReloadingSound: {fileID: 0}
   reloadingColor: {r: 0.22352943, g: 0.48235297, b: 0.26666668, a: 1}
   position: {fileID: 4116883606866106981}
 --- !u!114 &6408986928630204240
@@ -5774,6 +5777,7 @@ MonoBehaviour:
   currentLevelText: {fileID: 0}
   experienceBar: {fileID: 0}
   experienceCapInterval: 100
+  damageable: {fileID: 6408986928630204240}
   startingExpGoal: 100
 --- !u!114 &1179656960
 MonoBehaviour:

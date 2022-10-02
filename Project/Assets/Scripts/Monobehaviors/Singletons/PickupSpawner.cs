@@ -18,6 +18,7 @@ public class PickupSpawner : Singleton<PickupSpawner>
     {
         Pickup pickup = Instantiate(pickupPrefab, pos, Quaternion.identity, transform);
         pickup.Setup(i);
+        pickup.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-500, 500f), Random.Range(-500, 500f)));
     }
 
     public void SpawnItems(ItemPool itemPool, Vector3 pos, bool doForce = true)

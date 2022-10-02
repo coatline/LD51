@@ -93,6 +93,8 @@ public class Damageable : MonoBehaviour
         invincible = false;
     }
 
+    public void IncreaseMaxHealth(float val) => maxHealth += val;
+
     public void Destroy() => Destroy(gameObject);
 }
 

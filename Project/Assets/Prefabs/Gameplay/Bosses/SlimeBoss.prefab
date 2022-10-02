@@ -92,6 +92,8 @@ MonoBehaviour:
   stages: 2
   rb: {fileID: 5534137107251949016}
   jumper: {fileID: 5534137107251949012}
+  stage1JumpDuration: 0.5
+  stage2JumpDuration: 1
   stage1JumpRate: 1
   stage2JumpRate: 0.5
   stage1Speed: 5
@@ -142,7 +144,7 @@ MonoBehaviour:
   yVelFallingStart: 0.1
   fallingGravity: 5
   jumpingGravity: 2
-  spacebarTime: 0.5
+  spacebarTime: 1
   jumpVelocity: 12
   raycastDepth: 0.1
   raycastOffsetY: 0.05
@@ -250,7 +252,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5534137107251949021}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

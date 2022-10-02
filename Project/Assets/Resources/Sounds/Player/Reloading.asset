@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e97902b4d09854f40b4c9aa00a24dfa6, type: 3}
-  m_Name: Wizard
+  m_Script: {fileID: 11500000, guid: 2053892b1b7dca242b87304432b57657, type: 3}
+  m_Name: Reloading
   m_EditorClassIdentifier: 
-  sprite: {fileID: -1981013478, guid: 770c21ed38e99eb409137566d43df5e7, type: 3}
-  prefab: {fileID: 679857866116398289, guid: 0e18e8371a75dc143abcb11c13a09dbb, type: 3}
-  expOrbs: 50
+  clips:
+  - {fileID: 8300000, guid: 3867fd02b299eaf4492448ab5c7886db, type: 3}

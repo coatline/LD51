@@ -15,6 +15,7 @@ public class ExperienceHandler : MonoBehaviour
     [SerializeField] TMP_Text currentLevelText;
     [SerializeField] BarAnimation experienceBar;
     [SerializeField] int experienceCapInterval;
+    [SerializeField] Damageable damageable;
     [SerializeField] int startingExpGoal;
     int toNextLevel;
     int level;
@@ -44,6 +45,8 @@ public class ExperienceHandler : MonoBehaviour
     {
         exp = 0;
         toNextLevel += experienceCapInterval;
+        damageable.Heal(damageable.MaxHealth);
+        damageable.IncreaseMaxHealth(10);
         level++;
         currentLevelText.text = $"Lvl {level}";
         levelUpAudioSource.PlayOneShot(levelUpSound.RandomSound());

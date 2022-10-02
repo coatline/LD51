@@ -18,7 +18,7 @@ MonoBehaviour:
   description: 
   cost: 0
   autoUse: 0
-  useRate: 0.1
+  useRate: 0.05
   maxStack: 0
   healAmount: 0
   recoilSettings:
@@ -34,7 +34,7 @@ MonoBehaviour:
   maxLifeTime: 1
   weaponType: 0
   spread: 1
-  damage: 1
+  damage: 3
   knockBack: 0
   burst: 0
   attacksPerBurst: 0
@@ -50,6 +50,6 @@ MonoBehaviour:
     muzzleFlashSpeed: 11
     muzzleFlashSize: 1
     doFlash: 1
-  shotsPerClip: 12
-  reloadTime: 0.2
+  shotsPerClip: 10
+  reloadTime: 0.1
   reloadAnimation: 0

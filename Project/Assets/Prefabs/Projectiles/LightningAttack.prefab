@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8728840730793817673
 SpriteRenderer:
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignoreTags:
   - Boss
-  damagePerTick: 8
+  damagePerTick: 10
   tickInterval: 1
 --- !u!114 &8728840730793817675
 MonoBehaviour:
@@ -153,7 +153,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.08948499, y: 0}
-  m_Size: {x: 1.1453763, y: 2}
+  m_Size: {x: 1.72, y: 2.31}
   m_Direction: 0
 --- !u!82 &8728840730793817677
 AudioSource:
@@ -164,7 +164,7 @@ AudioSource:
   m_GameObject: {fileID: 8728840730793817682}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5135058167103421626, guid: e31546185f37adf458ed88d49b80d4dc, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
