@@ -57,7 +57,7 @@ public class HealthBarBehavior : MonoBehaviour
     private void OnDestroy()
     {
         // If we created ours, destroy it too
-        if (healthBarPrefab != null)
+        if (healthBarPrefab != null && healthBar != null)
             Destroy(healthBar.gameObject);
 
         health.HealthChanged -= HealthChanged;

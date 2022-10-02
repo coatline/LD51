@@ -55,6 +55,7 @@ public class Damageable : MonoBehaviour
 
     public void Kill()
     {
+        if (Dead) return;
         Dead = true;
         Died?.Invoke();
         animator.Play("Die");

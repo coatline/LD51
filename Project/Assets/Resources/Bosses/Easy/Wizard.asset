@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -1981013478, guid: 770c21ed38e99eb409137566d43df5e7, type: 3}
   prefab: {fileID: 679857866116398289, guid: 0e18e8371a75dc143abcb11c13a09dbb, type: 3}
+  expOrbs: 35

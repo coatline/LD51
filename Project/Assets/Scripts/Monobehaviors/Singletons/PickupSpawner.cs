@@ -34,6 +34,5 @@ public class PickupSpawner : Singleton<PickupSpawner>
     private void Start()
     {
         SpawnItem(new GunStack(DataLibrary.I.Guns["Gun"], 1), Vector3.zero);
-        SpawnExp(new Vector2(-4, 0));
     }
 }

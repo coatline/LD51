@@ -40,7 +40,7 @@ public class ReloadBehavior : MonoBehaviour
             AutoReloading = false;
             Reloading = false;
         }
-        print(stack.ShotsRemaining);
+
         reloadTimer = 0;
         gunStack = stack;
         gunStack.Shot += Shot;

@@ -25,12 +25,12 @@ public class Hover : MonoBehaviour
         if (transform.position.y >= startingHeight - changeDirectionCutoff)
         {
             targetHeight = startingHeight + changeDirectionCutoff;
-            dir = -1;
+            dir = 1;
         }
         else if (transform.position.y < startingHeight + changeDirectionCutoff)
         {
             targetHeight = startingHeight + hoverHeight - changeDirectionCutoff;
-            dir = 1;
+            dir = -1;
         }
 
         transform.Translate(new Vector3(0, Time.deltaTime * currentSpeed, 0));

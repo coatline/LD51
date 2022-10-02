@@ -10,7 +10,7 @@ public class WizardBoss : BossBehavior
     [SerializeField] float maxSpeed;
     float startingX;
 
-    void Start()
+    void Awake()
     {
         startingX = transform.position.x;
         targetX = distance - changeDirectionCutoff;
@@ -37,7 +37,7 @@ public class WizardBoss : BossBehavior
             dir = 1;
         }
 
-        transform.Translate(new Vector3(0, Time.deltaTime * currentSpeed, 0));
+        transform.Translate(new Vector3(Time.deltaTime * currentSpeed, 0));
         currentSpeed += dir * Time.deltaTime * Mathf.Lerp(transform.position.y, targetX, targetX - transform.position.x);
         currentSpeed = Mathf.Clamp(currentSpeed, -maxSpeed, maxSpeed);
 
