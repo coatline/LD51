@@ -29,10 +29,7 @@ public class BossBehavior : MonoBehaviour
     void Damaged(float current, float max)
     {
         float percentage = current / max;
-        print(percentage);
-        stages - Stage;
-        //int targetStage = current / max;
-        //if (current <= max / 3f)
-        //    SwitchStages();
+        //print($"{1 - percentage}, {(1 - percentage) * stages}, {(1 - percentage) * (stages - Stage)}, {(1 - percentage) * (Stage - stages)}");
+        Stage = Mathf.CeilToInt((1 - percentage) * stages);
     }
 }
