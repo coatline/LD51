@@ -127,7 +127,7 @@ MonoBehaviour:
   damagedSound: {fileID: 11400000, guid: 9a2d49a2dde2a6d46bd7de419e0daf22, type: 2}
   dieSound: {fileID: 11400000, guid: 80b6e46537698e44f994b4fd83e5b33e, type: 2}
   invincibilityTime: 0
-  maxHealth: 100
+  maxHealth: 150
   flash: {fileID: 679857866116398248}
   sr: {fileID: 679857866116398255}
 --- !u!114 &648058221817628494
@@ -162,7 +162,7 @@ MonoBehaviour:
   acceleration: 10
   maxSpeed: 2
   distance: 8
-  lightningDelay: 1
+  lightningDelay: 0.8
   chargeUpTime: 0.5
 --- !u!114 &679857866116398250
 MonoBehaviour:

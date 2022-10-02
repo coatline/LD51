@@ -42,4 +42,6 @@ public class Getter<T>
             return ts[n];
         }
     }
+
+    public T[] GetArray => ts;
 }

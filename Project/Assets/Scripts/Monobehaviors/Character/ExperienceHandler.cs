@@ -2,21 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ExperienceHandler : MonoBehaviour
 {
+    public System.Action LeveledUp;
+
     [SerializeField] AudioSource expAudioSource;
     [SerializeField] AudioSource levelUpAudioSource;
     [SerializeField] Sound gatherExpSound;
     [SerializeField] Sound levelUpSound;
 
-    [SerializeField] ParticleSystem particleSystem;
+    [SerializeField] ParticleSystem levelUpParticles;
     [SerializeField] TMP_Text experienceCountText;
     [SerializeField] TMP_Text currentLevelText;
     [SerializeField] BarAnimation experienceBar;
     [SerializeField] int experienceCapInterval;
     [SerializeField] Damageable damageable;
     [SerializeField] int startingExpGoal;
+    public int Level => level;
     int toNextLevel;
     int level;
     int exp;
@@ -50,16 +54,17 @@ public class ExperienceHandler : MonoBehaviour
         level++;
         currentLevelText.text = $"Lvl {level}";
         levelUpAudioSource.PlayOneShot(levelUpSound.RandomSound());
+        LeveledUp?.Invoke();
         StartCoroutine(EmitParticles());
     }
 
     IEnumerator EmitParticles()
     {
-        particleSystem.Emit(25);
+        levelUpParticles.Emit(25);
         yield return new WaitForSeconds(.1f);
-        particleSystem.Emit(50);
+        levelUpParticles.Emit(50);
         yield return new WaitForSeconds(.15f);
-        particleSystem.Emit(100);
+        levelUpParticles.Emit(100);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

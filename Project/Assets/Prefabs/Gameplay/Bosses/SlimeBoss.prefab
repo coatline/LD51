@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignoreTags:
   - Boss
-  damagePerTick: 3
+  damagePerTick: 5
   tickInterval: 0.1
 --- !u!114 &5534137107251949012
 MonoBehaviour:
@@ -169,7 +169,7 @@ MonoBehaviour:
   damagedSound: {fileID: 11400000, guid: c4d0531554393b048bcdd17c975812b1, type: 2}
   dieSound: {fileID: 11400000, guid: 80b6e46537698e44f994b4fd83e5b33e, type: 2}
   invincibilityTime: 0.05
-  maxHealth: 150
+  maxHealth: 210
   flash: {fileID: 1643720828}
   sr: {fileID: 5534137107251949018}
 --- !u!95 &5534137107251949014

@@ -10,11 +10,13 @@ public class BossSpawner : MonoBehaviour
     [SerializeField] SpriteRenderer preview;
     Stopwatch gameTimeStopwatch;
     Stopwatch stopwatch;
-    int bossesKilled;
+    public int BossesKilled { get; private set; }
+    public
     bool gameOver;
 
+    public string GetTimeSurvived => gameTimeStopwatch.Elapsed.TotalSeconds.ToString();
     public void StopSpawning() => gameOver = true;
-    public void BossDied() => bossesKilled++;
+    public void BossDied() => BossesKilled++;
 
     void Start()
     {

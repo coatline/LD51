@@ -10,6 +10,7 @@ public class Inputs : MonoBehaviour
     const float FIRE_DEADZONE = .175f;
     const float DOWN_PLATFORM_DEADZONE = .5f;
 
+    [SerializeField] ReloadBehavior reloadBehavior;
     [SerializeField] UnityEvent DecendPlatform;
     [SerializeField] GameObject settings;
     [SerializeField] ItemUser itemUser;
@@ -86,6 +87,15 @@ public class Inputs : MonoBehaviour
         if (value.performed == false) return;
         if (val >= 0)
             player.TryPickup();
+    }
+
+    public void OnReload(InputAction.CallbackContext value)
+    {
+        float val = value.ReadValue<float>();
+
+        if (value.performed == false) return;
+        if (val >= 0)
+            reloadBehavior.StartReloading();
     }
 
     private void Update()

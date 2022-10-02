@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] ItemHolder itemHolder;
     Pickup currentPickup;
 
-    void Awake()
+    void Start()
     {
         itemHolder.ChangeItem(new GunStack(DataLibrary.I.Guns["Starter Pistol"], 1));
     }

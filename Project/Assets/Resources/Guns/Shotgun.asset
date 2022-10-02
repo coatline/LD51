@@ -22,19 +22,19 @@ MonoBehaviour:
   maxStack: 0
   healAmount: 0
   recoilSettings:
-    recoilAmount: 0.3
+    recoilAmount: 0.1
     recoverySpeed: 4
     recoveryDelay: 0
   attackLinearDrag: {x: 0, y: 0}
   attackGravity: 1
   attackForce: 25
-  attackCount: 8
+  attackCount: 15
   fadeOut: 1
   fadeOutMagnitude: 0
   maxLifeTime: 1
   weaponType: 0
-  spread: 15
-  damage: 2.5
+  spread: 20
+  damage: 4.5
   knockBack: 0
   burst: 0
   attacksPerBurst: 0
@@ -50,6 +50,6 @@ MonoBehaviour:
     muzzleFlashSpeed: 5
     muzzleFlashSize: 1
     doFlash: 1
-  shotsPerClip: 12
-  reloadTime: 0.2
+  shotsPerClip: 30
+  reloadTime: 1
   reloadAnimation: 0

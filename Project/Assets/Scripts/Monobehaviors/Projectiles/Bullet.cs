@@ -32,14 +32,14 @@ public class Bullet : Projectile
         //        return;
         //    }
         //}
-        //else if (bounceOffWall && collision.gameObject.CompareTag("Wall"))
-        //{
-        //    Reflect(collision.contacts[0]);
-        //    return;
-        //}
+        if (bounceOffWall)
+        {
+            Reflect(collision.contacts[0]);
+            //Hit();
+            //return;
+        }
 
         //if (collision.gameObject.CompareTag("Player"))
-        print($"{collision.gameObject.GetComponent<Damageable>()} {collision.gameObject.name}");
         if (collision.gameObject.GetComponent<Damageable>() != null)
         {
             Hit(collision);

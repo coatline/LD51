@@ -62,7 +62,7 @@ public class WizardBoss : BossBehavior
     void Awake()
     {
         startingX = transform.position.x;
-        targetX = distance - changeDirectionCutoff;
+        //targetX = distance - changeDirectionCutoff;
         dir = 1;
     }
 
@@ -72,31 +72,25 @@ public class WizardBoss : BossBehavior
     }
 
     float currentSpeed;
-    float targetX;
-    int intervals;
+    //float targetX;
     int dir;
 
     void Hover()
     {
         if (transform.position.x >= distance - changeDirectionCutoff)
         {
-            intervals++;
-            targetX = -distance + changeDirectionCutoff;
+            //targetX = -distance + changeDirectionCutoff;
             dir = -1;
         }
         else if (transform.position.x < -distance + changeDirectionCutoff)
         {
-            intervals++;
-            targetX = distance - changeDirectionCutoff;
+            //targetX = distance - changeDirectionCutoff;
             dir = 1;
         }
 
         transform.Translate(new Vector3(Time.deltaTime * currentSpeed, 0));
-        currentSpeed += dir * Time.deltaTime * Mathf.Lerp(transform.position.y, targetX, targetX - transform.position.x) * acceleration;
+        currentSpeed += dir * Time.deltaTime * acceleration;
         currentSpeed = Mathf.Clamp(currentSpeed, -maxSpeed, maxSpeed);
-
-        if (intervals == 4)
-            targetX = startingX;
     }
 
     IEnumerator SpawnLightning()
@@ -105,7 +99,7 @@ public class WizardBoss : BossBehavior
         yield return new WaitForSeconds(lightningDelay - chargeUpTime);
         sr.sprite = sprites[1];
         yield return new WaitForSeconds(chargeUpTime);
-        Instantiate(lightningPrefab, new Vector3(Random.Range(-10, 10f), Random.Range(-3.5f, 7f)), Quaternion.identity);
+        Instantiate(lightningPrefab, new Vector3(Random.Range(-10, 10f), Random.Range(-4f, 6f)), Quaternion.identity);
         StartCoroutine(SpawnLightning());
     }
 

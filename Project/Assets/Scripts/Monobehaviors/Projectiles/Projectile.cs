@@ -45,10 +45,17 @@ public class Projectile : MonoBehaviour
         IgnoreColliders(ignoreColliders);
     }
 
-    public void Setup(float damage, Player player, Collider2D[] ignoreColliders = null)
+    public void Setup(Vector3 force, float damage, Sound sound, string layer)
     {
+        rb.velocity = force;
+
         this.damage = damage;
-        IgnoreColliders(ignoreColliders);
+
+        // So that the physics system does not determine knockback.
+        rb.mass = 0.000001f;
+
+        gameObject.layer = LayerMask.NameToLayer(layer);
+        audioSource.PlayOneShot(sound.RandomSound());
     }
 
     //public void Setup(Vector3 force, float gravity, Vector2 linearDrag, float damage, float knockback, Collider2D[] ignoreColliders = null /*Sound soundOnShot*/)

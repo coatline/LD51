@@ -4870,8 +4870,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   col: {fileID: 9126525974032349611}
   playerStartColor: {r: 1, g: 1, b: 1, a: 0}
-  durability: 0
-  bounceOffWall: 0
+  durability: 2
+  bounceOffWall: 1
 --- !u!212 &8562298345010794541
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4940,7 +4940,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c75e3fa182fa5d44788e9b51100030f8, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -4954,7 +4954,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 8562298345010794539}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c75e3fa182fa5d44788e9b51100030f8, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

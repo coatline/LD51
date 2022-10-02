@@ -9,14 +9,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject title;
     [SerializeField] Image transitioner;
     [SerializeField] GameObject settings;
+    [SerializeField] GameObject controls;
 
     public void ChangeScene(string name) => SceneManager.LoadScene(name);
-
-    public void DisplaySettings()
-    {
-        settings.SetActive(true);
-        title.SetActive(false);
-    }
 
     IEnumerator DoFade(float speed)
     {
@@ -43,5 +38,20 @@ public class MenuManager : MonoBehaviour
     {
         settings.SetActive(false);
         title.SetActive(true);
+        controls.SetActive(false);
+    }
+
+    public void DisplaySettings()
+    {
+        settings.SetActive(true);
+        title.SetActive(false);
+        controls.SetActive(false);
+    }
+
+    public void DisplayControls()
+    {
+        controls.SetActive(true);
+        settings.SetActive(false);
+        title.SetActive(false);
     }
 }
