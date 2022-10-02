@@ -5,15 +5,15 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     [SerializeField] SpriteRenderer sr;
-    Item item;
+    ItemStack item;
 
-    public void Setup(Item item)
+    public void Setup(ItemStack item)
     {
         this.item = item;
-        sr.sprite = item.Sprite;
+        sr.sprite = item.Type.Sprite;
     }
 
-    public Item Grab()
+    public ItemStack Grab()
     {
         Destroy(gameObject);
         return item;

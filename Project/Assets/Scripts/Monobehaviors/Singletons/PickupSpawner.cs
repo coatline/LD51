@@ -14,16 +14,10 @@ public class PickupSpawner : Singleton<PickupSpawner>
         rb.AddForce(new Vector2(Random.Range(-250f, 250f), Random.Range(-150f, 350f)));
     }
 
-    public void SpawnItem(Item i, int count, Vector3 pos, bool doForce = true)
+    public void SpawnItem(ItemStack i, Vector3 pos, bool doForce = true)
     {
         Pickup pickup = Instantiate(pickupPrefab, pos, Quaternion.identity, transform);
         pickup.Setup(i);
-    }
-
-    public void SpawnItem(ItemPackage ip, Vector3 pos, bool doForce = true)
-    {
-        Pickup pickup = Instantiate(pickupPrefab, pos, Quaternion.identity, transform);
-        pickup.Setup(ip.Item);
     }
 
     public void SpawnItems(ItemPool itemPool, Vector3 pos, bool doForce = true)
@@ -33,13 +27,13 @@ public class PickupSpawner : Singleton<PickupSpawner>
         for (int k = 0; k < items.Length; k++)
         {
             Pickup pickup = Instantiate(pickupPrefab, pos, Quaternion.identity, transform);
-            pickup.Setup(items[k].Item);
+            pickup.Setup(new ItemStack(items[k].Item, 1));
         }
     }
 
     private void Start()
     {
-        SpawnItem(DataLibrary.I.Guns["Gun"], 1, Vector3.zero);
+        SpawnItem(new GunStack(DataLibrary.I.Guns["Gun"], 1), Vector3.zero);
         SpawnExp(new Vector2(-4, 0));
     }
 }

@@ -7,12 +7,17 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] Boss bossData;
 
     [SerializeField] Damageable damageable;
-    [SerializeField] SpriteRenderer sr;
+    [SerializeField] int stages;
+
+    // Start at stage 1
+    int stage;
+    protected virtual int Stage { get { return stage; } set { stage = value; } }
 
     private void Start()
     {
         damageable.HealthChanged += Damaged;
         damageable.Died += Die;
+        Stage = 1;
     }
 
     void Die()
@@ -23,7 +28,11 @@ public class BossBehavior : MonoBehaviour
 
     void Damaged(float current, float max)
     {
-        if (current <= max / 3f)
-            SwitchStages();
+        float percentage = current / max;
+        print(percentage);
+        stages - Stage;
+        //int targetStage = current / max;
+        //if (current <= max / 3f)
+        //    SwitchStages();
     }
 }

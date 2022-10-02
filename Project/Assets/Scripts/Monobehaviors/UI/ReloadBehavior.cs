@@ -40,7 +40,7 @@ public class ReloadBehavior : MonoBehaviour
             AutoReloading = false;
             Reloading = false;
         }
-
+        print(stack.ShotsRemaining);
         reloadTimer = 0;
         gunStack = stack;
         gunStack.Shot += Shot;
@@ -49,7 +49,10 @@ public class ReloadBehavior : MonoBehaviour
         bar.UpdateFillAndFlash(gunStack.ShotsRemaining, gunStack.MaxShots);
 
         if (stack.ShotsRemaining == 0)
+        {
+            Reloading = true;
             AutoReloading = true;
+        }
         else
             bar.SetDefaultColor();
     }

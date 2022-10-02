@@ -9,7 +9,7 @@ public class ItemHolder : MonoBehaviour
     {
         get
         {
-            if (itemDisplayer.ItemStack == null) return null;
+            if (itemDisplayer == null || itemDisplayer.ItemStack == null) return null;
             return itemDisplayer.ItemStack;
         }
     }
@@ -17,7 +17,7 @@ public class ItemHolder : MonoBehaviour
     {
         get
         {
-            if (itemDisplayer.ItemStack == null) return null;
+            if (itemDisplayer == null || itemDisplayer.ItemStack == null) return null;
             return itemDisplayer.ItemStack.Type;
         }
     }

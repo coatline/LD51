@@ -2,42 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeBoss : MonoBehaviour
+public class SlimeBoss : BossBehavior
 {
-    [SerializeField] Damageable damageable;
-    [SerializeField] SpriteRenderer sr;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Jumper jumper;
 
+    [SerializeField] float stage1JumpRate;
+    [SerializeField] float stage2JumpRate;
     [SerializeField] float stage1Speed;
     [SerializeField] float stage2Speed;
     [SerializeField] Sprite[] stage1Sprites;
     [SerializeField] Sprite[] stage2Sprites;
+    [SerializeField] SpriteRenderer sr;
+
+    float movementSpeed;
+    float jumpDuration;
+    Sprite[] sprites;
+    float jumpDelay;
+
     bool jumping;
-    float speed;
     int dir = 1;
-    bool stage2;
 
-    private void Start()
+    protected override int Stage
     {
-        speed = stage1Speed;
-        StartCoroutine(WaitForNextJump());
-        damageable.HealthChanged += Damaged;
-        damageable.Died += Died;
-    }
-
-    void Died()
-    {
-        for (int i = 0; i < Random.Range(25, 50); i++)
+        get
         {
-            PickupSpawner.I.SpawnExp(transform.position);
+            return base.Stage;
         }
-    }
+        set
+        {
+            StopAllCoroutines();
 
-    void Damaged(float current, float max)
-    {
-        if (current <= max / 3f && !stage2)
-            SwitchStages();
+            if (value == 1)
+            {
+                movementSpeed = stage1Speed;
+                jumpDelay = stage1JumpRate;
+                sprites = stage1Sprites;
+            }
+            else if (value == 2)
+            {
+                movementSpeed = stage2Speed;
+                jumpDelay = stage2JumpRate;
+                sprites = stage2Sprites;
+            }
+
+            StartCoroutine(WaitForNextJump());
+
+            base.Stage = value;
+        }
     }
 
     void FixedUpdate()
@@ -45,7 +57,7 @@ public class SlimeBoss : MonoBehaviour
         if (jumping)
         {
             jumper.PressJump();
-            rb.velocity = new Vector2(speed * dir, rb.velocity.y);
+            rb.velocity = new Vector2(movementSpeed * dir, rb.velocity.y);
         }
         else
             rb.velocity = new Vector2(0, rb.velocity.y);
@@ -60,40 +72,17 @@ public class SlimeBoss : MonoBehaviour
     IEnumerator WaitForNextJump()
     {
         // Just landed
-        waiting = true;
 
-        if (stage2)
-        {
-            sr.sprite = stage2Sprites[0];
-            yield return new WaitForSeconds(GetJumpDelay() / 2f);
-            StartCoroutine(HoldJumpStage2());
-        }
-        else
-        {
-            sr.sprite = stage1Sprites[0];
-            yield return new WaitForSeconds(GetJumpDelay());
-            StartCoroutine(HoldJumpStage1());
-        }
+        waiting = true;
+        sr.sprite = sprites[0];
+
+        yield return new WaitForSeconds(jumpDelay);
+
+        StartCoroutine(HoldJump());
         waiting = false;
     }
 
-    IEnumerator HoldJumpStage1()
-    {
-        if (transform.position.x < 0)
-            dir = 1;
-        else
-            dir = -1;
-
-        jumping = true;
-
-        yield return new WaitForSeconds(GetJumpTime());
-
-        jumping = false;
-        jumper.ReleaseJumpButton();
-        sr.sprite = stage1Sprites[1];
-    }
-
-    IEnumerator HoldJumpStage2()
+    IEnumerator HoldJump()
     {
         if (Random.Range(0, 2) == 0)
         {
@@ -105,32 +94,10 @@ public class SlimeBoss : MonoBehaviour
 
         jumping = true;
 
-        yield return new WaitForSeconds(GetJumpTime());
+        yield return new WaitForSeconds(jumpDuration);
 
         jumping = false;
         jumper.ReleaseJumpButton();
-        sr.sprite = stage2Sprites[1];
-    }
-
-    void SwitchStages()
-    {
-        stage2 = true;
-        speed = stage2Speed;
-    }
-
-    float GetJumpTime()
-    {
-        if (dir == 1)
-            return .25f;
-        else
-            return .75f;
-    }
-
-    float GetJumpDelay()
-    {
-        if (dir == 1)
-            return 1f;
-        else
-            return 2f;
+        sr.sprite = sprites[1];
     }
 }

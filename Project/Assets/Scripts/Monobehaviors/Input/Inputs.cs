@@ -73,6 +73,7 @@ public class Inputs : MonoBehaviour
     {
         float val = value.ReadValue<float>();
 
+        if (value.performed == false) return;
         if (val >= 0)
             player.TryPickup();
     }

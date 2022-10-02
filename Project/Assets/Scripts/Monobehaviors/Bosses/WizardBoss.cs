@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WizardBoss : MonoBehaviour
+public class WizardBoss : BossBehavior
 {
+
+
     void Start()
     {
         

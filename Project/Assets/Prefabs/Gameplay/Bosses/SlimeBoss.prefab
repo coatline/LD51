@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 467441048}
   m_Layer: 9
   m_Name: SlimeBoss
-  m_TagString: Damage
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +88,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageable: {fileID: 5534137107251949013}
   sr: {fileID: 5534137107251949018}
-  animator: {fileID: 5534137107251949014}
   rb: {fileID: 5534137107251949016}
   jumper: {fileID: 5534137107251949012}
   stage1Speed: 5
@@ -305,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65a7c36bbd69ce46a4a5b64f7249abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignoreTags: []
   damagePerTick: 3
   tickInterval: 0.1
 --- !u!114 &467441048
