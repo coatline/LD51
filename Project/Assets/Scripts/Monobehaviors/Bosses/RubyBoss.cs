@@ -36,6 +36,7 @@ public class RubyBoss : BossBehavior
         set
         {
             StopAllCoroutines();
+            firing = false;
 
             if (value == 1)
             {

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: RubyDamaged
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: ceebbd45aeabf72418b274d54df6ffda, type: 3}
+  - {fileID: 8300000, guid: fe0d6b8940b6f0a448fdcad06628ded0, type: 3}
+  - {fileID: 8300000, guid: 98943aa763e9f8647b99d0efaca1ccb5, type: 3}
+  - {fileID: 8300000, guid: 2ed0c5edb922c3f44b169b1d8b13334e, type: 3}

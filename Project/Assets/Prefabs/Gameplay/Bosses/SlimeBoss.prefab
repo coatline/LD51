@@ -92,8 +92,8 @@ MonoBehaviour:
   stages: 2
   rb: {fileID: 5534137107251949016}
   jumper: {fileID: 5534137107251949012}
-  stage1JumpDuration: 0.5
-  stage2JumpDuration: 1
+  stage1JumpDuration: 0.3
+  stage2JumpDuration: 0.6
   stage1JumpRate: 1
   stage2JumpRate: 0.5
   stage1Speed: 5

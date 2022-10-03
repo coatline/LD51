@@ -19,9 +19,11 @@ public class SlimeBoss : BossBehavior
 
     float movementSpeed;
     float jumpDuration;
+    float moveChance;
     Sprite[] sprites;
     float jumpDelay;
 
+    bool moving;
     bool jumping;
     int dir = 1;
 
@@ -33,7 +35,6 @@ public class SlimeBoss : BossBehavior
         }
         set
         {
-            print("Stage changed");
             StopAllCoroutines();
 
             if (value == 1)
@@ -42,6 +43,7 @@ public class SlimeBoss : BossBehavior
                 movementSpeed = stage1Speed;
                 jumpDelay = stage1JumpRate;
                 sprites = stage1Sprites;
+                moveChance = .15f;
             }
             else if (value == 2)
             {
@@ -49,6 +51,7 @@ public class SlimeBoss : BossBehavior
                 movementSpeed = stage2Speed;
                 jumpDelay = stage2JumpRate;
                 sprites = stage2Sprites;
+                moveChance = .5f;
             }
 
             StartCoroutine(WaitForNextJump());
@@ -65,12 +68,19 @@ public class SlimeBoss : BossBehavior
             rb.velocity = new Vector2(movementSpeed * dir, rb.velocity.y);
         }
         else
-            rb.velocity = new Vector2(0, rb.velocity.y);
+        {
+            if (moving)
+                rb.velocity = new Vector2(movementSpeed * dir, rb.velocity.y);
+            else
+                rb.velocity = new Vector2(0, rb.velocity.y);
+        }
 
-        if (waiting == false)
-            if (jumping == false)
-                if (jumper.Grounded)
-                    StartCoroutine(WaitForNextJump());
+
+        if (moving == false)
+            if (waiting == false)
+                if (jumping == false)
+                    if (jumper.Grounded)
+                        StartCoroutine(WaitForNextJump());
     }
 
     bool waiting;
@@ -83,8 +93,21 @@ public class SlimeBoss : BossBehavior
 
         yield return new WaitForSeconds(jumpDelay);
 
-        StartCoroutine(HoldJump());
+
+        if (Random.Range(0, 1f) <= moveChance)
+            StartCoroutine(Move());
+        else
+            StartCoroutine(HoldJump());
+
         waiting = false;
+    }
+
+    IEnumerator Move()
+    {
+        sr.sprite = sprites[1];
+        moving = true;
+        yield return new WaitForSeconds(1f);
+        moving = false;
     }
 
     IEnumerator HoldJump()
